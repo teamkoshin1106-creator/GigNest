@@ -196,6 +196,32 @@ src/
 - Efficient state management with React Hooks
 - Responsive images and optimized bundle size
 
+## Assumptions & Design Decisions
+
+### Technical Choices:
+1. **React + TypeScript** - Chosen for strong type safety and developer experience
+2. **Tailwind CSS** - Utility-first approach for rapid, consistent styling
+3. **Framer Motion** - Smooth animations without heavy animation libraries
+4. **Local Storage** - Simple persistence for user profiles without backend
+5. **useMemo for Filtering** - Performance optimization for complex filter combinations
+6. **Debounced Search** - 300ms delay balances real-time feedback with performance
+
+### Design Decisions:
+1. **Mock Data Only** - No backend API (as per requirements)
+2. **Single Page App** - All features in one app without page reloads
+3. **Horizontal Budget Filters** - Side-by-side inputs for better visibility
+4. **Grid + List View** - Flexibility in how users browse gigs
+5. **User Profiles** - Beyond requirements to add value (track applications, personalization)
+6. **Sign-Up on Load** - Immediate user context collection for recommendations
+7. **Recommended Gigs** - Based on user skills for better UX
+
+### Defensive Programming:
+1. Budget validation prevents negative numbers
+2. Input sanitization on search queries
+3. Proper null checks for user data
+4. Error states for invalid filter combinations
+5. Responsive design with mobile-first approach
+
 ## Browser Support
 
 Modern browsers (Chrome, Firefox, Safari, Edge)

@@ -5,7 +5,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, User, Lock, Check, ChevronRight } from 'lucide-react';
+import { X, User, Check, ChevronRight } from 'lucide-react';
 import { Category, User as UserType } from '../types';
 import { Button } from './ui/Button';
 import { Input } from './ui/Input';
@@ -21,7 +21,6 @@ const SKILLS: Category[] = ["Web Development", "Mobile Dev", "Design", "Writing"
 export const SignUpModal: React.FC<SignUpModalProps> = ({ isOpen, onSignUp, onSkip }) => {
   const [step, setStep] = useState(1);
   const [name, setName] = useState('');
-  const [password, setPassword] = useState('');
   const [selectedSkills, setSelectedSkills] = useState<Category[]>([]);
 
   const handleToggleSkill = (skill: Category) => {
@@ -77,22 +76,14 @@ export const SignUpModal: React.FC<SignUpModalProps> = ({ isOpen, onSignUp, onSk
                     label="Full Name"
                     placeholder="John Doe"
                     value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    onChange={(e) => setName(e.target.value.trim())}
                     icon={<User size={18} />}
-                  />
-                  <Input
-                    label="Password"
-                    type="password"
-                    placeholder="••••••••"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    icon={<Lock size={18} />}
                   />
                 </div>
 
                 <Button 
                   className="w-full py-6 rounded-2xl font-black text-lg"
-                  disabled={!name || !password}
+                  disabled={!name || name.length < 2}
                   onClick={() => setStep(2)}
                 >
                   Next Step

@@ -356,7 +356,13 @@ export default function App() {
                   <select
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value as SortOption)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+                        e.currentTarget.form?.dispatchEvent(new Event('change', { bubbles: true }));
+                      }
+                    }}
                     className="appearance-none bg-white border border-slate-100 shadow-sm rounded-xl pl-4 pr-10 py-3 text-xs font-bold text-text-primary focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary cursor-pointer"
+                    aria-label="Sort gigs by"
                   >
                     <option value="newest">Newest</option>
                     <option value="oldest">Oldest</option>

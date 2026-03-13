@@ -63,12 +63,13 @@ export const FiltersPanel: React.FC<{
   };
 
   const handleBudgetInputChange = (e: React.ChangeEvent<HTMLInputElement>, index: 0 | 1) => {
-    const value = e.target.value === '' ? 0 : parseInt(e.target.value);
-    if (isNaN(value)) return;
+    let value = e.target.value === '' ? 0 : parseInt(e.target.value);
+    if (isNaN(value) || value < 0) return; // Prevent negative numbers
+    if (value > 50000) value = 50000; // Cap at max
 
     setFilters(prev => {
       const newRange = [...prev.budgetRange] as [number, number];
-      newRange[index] = value;
+      newRange[index] = Math.max(0, value); // Ensure non-negative
       return { ...prev, budgetRange: newRange };
     });
   };
