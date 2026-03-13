@@ -29,6 +29,29 @@ GigNest is a single-page application built with React and TypeScript that allows
 - 🎨 Smooth animations and transitions
 - 📊 Active filter indicators and results counter
 
+## Screenshots
+
+### 1. Home Page - Browse All Gigs
+![GigNest Home Page showing 21 gigs in grid layout with filter panel on the left](https://raw.githubusercontent.com/teamkoshin1106-creator/job-board-filter-and-search-interface-for-a-fictional-freelance-marketplace/main/screenshots/01-home.png)
+
+### 2. Profile Page - Track Your Applications
+![User profile page showing applied gigs and professional skills with light sage green career builder section](https://raw.githubusercontent.com/teamkoshin1106-creator/job-board-filter-and-search-interface-for-a-fictional-freelance-marketplace/main/screenshots/02-profile.png)
+
+### 3. Filtered View - Multi-Filter Search (Recommended + Categories)
+![Filtered results showing 4 gigs matching Web Development and Mobile Dev categories with recommended filter applied](https://raw.githubusercontent.com/teamkoshin1106-creator/job-board-filter-and-search-interface-for-a-fictional-freelance-marketplace/main/screenshots/03-filtered.png)
+
+### 4. Real-Time Search - Marketing Keyword
+![Search results for 'marketing' showing 3 matching gigs with real-time filtering](https://raw.githubusercontent.com/teamkoshin1106-creator/job-board-filter-and-search-interface-for-a-fictional-freelance-marketplace/main/screenshots/04-search.png)
+
+### 5. Complex Filtering - Search + Budget Range + Experience Level
+![Advanced filtering with marketing search, budget range (₹5,000 - ₹30,002), and Expert experience level showing 1 result](https://raw.githubusercontent.com/teamkoshin1106-creator/job-board-filter-and-search-interface-for-a-fictional-freelance-marketplace/main/screenshots/05-advanced-filter.png)
+
+### 6. Gig Detail Modal - Complete Job Information
+![Modal showing full gig details including description, budget, client info, and Apply Now button](https://raw.githubusercontent.com/teamkoshin1106-creator/job-board-filter-and-search-interface-for-a-fictional-freelance-marketplace/main/screenshots/06-gig-detail.png)
+
+### 7. Applied Gigs - Application Tracking
+![Profile page showing applied gigs with status badge and quick stats for applications](https://raw.githubusercontent.com/teamkoshin1106-creator/job-board-filter-and-search-interface-for-a-fictional-freelance-marketplace/main/screenshots/07-applied-gigs.png)
+
 ## Tech Stack
 
 - **Frontend:** React 19 with TypeScript
