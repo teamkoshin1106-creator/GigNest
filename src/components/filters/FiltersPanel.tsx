@@ -49,9 +49,9 @@ export const FiltersPanel: React.FC<{
   const toggleCategory = (category: Category) => {
     setFilters(prev => ({
       ...prev,
-      categories: prev.categories.includes(category)
-        ? prev.categories.filter(c => c !== category)
-        : [...prev.categories, category]
+      categories: (prev.categories || []).includes(category)
+        ? (prev.categories || []).filter(c => c !== category)
+        : [...(prev.categories || []), category]
     }));
   };
 
@@ -86,7 +86,7 @@ export const FiltersPanel: React.FC<{
       <div className="flex-1 overflow-y-auto pr-4 -mr-4">
         <FilterSection 
           title="Categories" 
-          showClear={filters.categories.length > 0}
+          showClear={(filters.categories || []).length > 0}
           onClear={() => setFilters(prev => ({ ...prev, categories: [] }))}
         >
           <div className="flex flex-wrap gap-2">
@@ -96,7 +96,7 @@ export const FiltersPanel: React.FC<{
                 onClick={() => toggleCategory(category)}
                 className={`
                   px-3 py-1.5 rounded-xl text-xs font-bold transition-all border
-                  ${filters.categories.includes(category)
+                  ${(filters.categories || []).includes(category)
                     ? 'bg-primary border-primary text-white shadow-lg shadow-primary/20'
                     : 'bg-white border-slate-100 text-slate-500 hover:border-slate-300'}
                 `}
@@ -112,13 +112,13 @@ export const FiltersPanel: React.FC<{
             {EXPERIENCE_LEVELS.map(level => (
               <label key={level} className={`
                 flex items-center p-3 rounded-2xl border transition-all cursor-pointer group
-                ${(level === "All" ? filters.experienceLevels.length === 0 : filters.experienceLevels.includes(level as ExperienceLevel))
+                ${(level === "All" ? (filters.experienceLevels || []).length === 0 : (filters.experienceLevels || []).includes(level as ExperienceLevel))
                   ? 'border-primary bg-primary/5 text-primary'
                   : 'border-slate-50 hover:border-slate-200 bg-slate-50/50 text-slate-500'}
               `}>
                 <div className={`
                   flex h-5 w-5 items-center justify-center rounded-full border-2 transition-all
-                  ${(level === "All" ? filters.experienceLevels.length === 0 : filters.experienceLevels.includes(level as ExperienceLevel))
+                  ${(level === "All" ? (filters.experienceLevels || []).length === 0 : (filters.experienceLevels || []).includes(level as ExperienceLevel))
                     ? 'border-primary bg-primary'
                     : 'border-slate-300 bg-white group-hover:border-slate-400'}
                 `}>
@@ -127,7 +127,7 @@ export const FiltersPanel: React.FC<{
                 <input
                   type="radio"
                   name="experience"
-                  checked={level === "All" ? filters.experienceLevels.length === 0 : filters.experienceLevels.includes(level as ExperienceLevel)}
+                  checked={level === "All" ? (filters.experienceLevels || []).length === 0 : (filters.experienceLevels || []).includes(level as ExperienceLevel)}
                   onChange={() => handleExperienceChange(level)}
                   className="sr-only"
                 />

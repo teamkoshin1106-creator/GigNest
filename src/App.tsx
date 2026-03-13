@@ -79,11 +79,11 @@ export default function App() {
       setIsSignUpOpen(true);
       return;
     }
-    if (user.appliedGigIds.includes(gigId)) return;
+    if (user && (user.appliedGigIds || []).includes(gigId)) return;
     
     const updatedUser = {
-      ...user,
-      appliedGigIds: [...user.appliedGigIds, gigId]
+      ...user!,
+      appliedGigIds: [...(user?.appliedGigIds || []), gigId]
     };
     handleUpdateUser(updatedUser);
   };
@@ -126,13 +126,13 @@ export default function App() {
         
         // 2. Category Filter: Matches if no categories selected OR gig category is in the selected list
         const matchesCategory = 
-          filters.categories.length === 0 || 
-          filters.categories.includes(gig.category as Category);
+          (filters.categories || []).length === 0 || 
+          (filters.categories || []).includes(gig.category as Category);
         
         // 3. Experience Filter: Matches if no levels selected OR gig level is in the selected list
         const matchesExperience = 
-          filters.experienceLevels.length === 0 || 
-          filters.experienceLevels.includes(gig.experienceLevel as ExperienceLevel);
+          (filters.experienceLevels || []).length === 0 || 
+          (filters.experienceLevels || []).includes(gig.experienceLevel as ExperienceLevel);
         
         // 4. Budget Filter: Checks if gig budget falls within the min/max range
         const matchesBudget = 
