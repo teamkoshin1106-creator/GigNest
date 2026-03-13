@@ -21,10 +21,16 @@ export interface Gig {
   location: string;
 }
 
+export interface User {
+  name: string;
+  skills: Category[];
+}
+
 export interface FilterState {
   categories: Category[];
   budgetRange: [number, number];
   experienceLevels: ExperienceLevel[];
+  showRecommended: boolean;
 }
 
 export type SortOption = "newest" | "oldest" | "budget_high" | "budget_low";
