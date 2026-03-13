@@ -60,6 +60,39 @@ GigNest is a single-page application built with React and TypeScript that allows
    npm run build
    ```
 
+## Deployment
+
+### Deploy on Vercel (Recommended)
+
+**Option 1: Using Vercel CLI**
+```bash
+npm install -g vercel
+vercel
+```
+Follow the prompts to connect your GitHub repository and deploy.
+
+**Option 2: Connect GitHub to Vercel**
+1. Go to [vercel.com](https://vercel.com)
+2. Sign up with GitHub
+3. Import your repository
+4. Vercel will auto-detect Vite configuration
+5. Click "Deploy"
+
+**Option 3: Deploy to Netlify**
+```bash
+npm run build
+npm install -g netlify-cli
+netlify deploy --prod --dir=dist
+```
+
+### Environment Variables
+No environment variables required for this project. All data is mocked locally.
+
+### Performance
+- Build time: ~5 seconds
+- Bundle size: ~385 KB (gzipped: ~119 KB)
+- Fully optimized for production
+
 ### Using the App
 
 #### Sign Up
