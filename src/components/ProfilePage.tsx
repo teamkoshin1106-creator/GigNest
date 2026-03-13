@@ -194,11 +194,8 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({ user, onBack, onLogout
               className="bg-indigo-600 rounded-3xl p-8 text-white shadow-xl shadow-indigo-200 relative overflow-hidden"
             >
               <div className="relative z-10">
-                <h2 className="text-2xl font-black mb-2">Complete your profile</h2>
-                <p className="text-indigo-100 text-sm mb-6 max-w-md">Users with complete profiles are 4x more likely to get hired by top clients.</p>
-                <Button className="bg-white text-indigo-600 hover:bg-emerald-500 hover:text-white border-none font-black transition-all duration-300 px-8 py-4 rounded-xl">
-                  Finish Setup
-                </Button>
+                <h2 className="text-2xl font-black mb-2">Build Your Freelance Career</h2>
+                <p className="text-indigo-100 text-sm mb-6 max-w-md">Add your professional skills above to get personalized gig recommendations from top clients.</p>
               </div>
               <div className="absolute -right-10 -bottom-10 h-40 w-40 bg-white/10 rounded-full blur-3xl" />
               <div className="absolute -left-10 -top-10 h-40 w-40 bg-indigo-400/20 rounded-full blur-3xl" />

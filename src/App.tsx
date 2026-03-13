@@ -256,13 +256,18 @@ export default function App() {
           {/* Desktop Sidebar Filters */}
           <aside className="hidden lg:block">
             <div className="sticky top-28 h-[calc(100vh-140px)]">
-              <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm h-full flex flex-col">
-                <h3 className="text-xl font-black mb-8">Filters</h3>
-                <FiltersPanel 
-                  filters={filters} 
-                  setFilters={setFilters} 
-                  onReset={resetFilters} 
-                />
+              <div className="bg-white p-0 rounded-3xl border border-slate-100 shadow-lg h-full flex flex-col">
+                <div className="px-8 pt-8 pb-4">
+                  <h3 className="text-2xl font-black mb-1 text-slate-900">Filters</h3>
+                  <p className="text-xs text-slate-500 font-semibold">Refine your search</p>
+                </div>
+                <div className="flex-1 overflow-hidden flex flex-col px-6 pt-2">
+                  <FiltersPanel 
+                    filters={filters} 
+                    setFilters={setFilters} 
+                    onReset={resetFilters} 
+                  />
+                </div>
               </div>
             </div>
           </aside>
@@ -420,13 +425,16 @@ export default function App() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed inset-y-0 right-0 z-50 w-full max-w-xs bg-white p-8 shadow-2xl lg:hidden overflow-y-auto"
+              className="fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-white p-8 shadow-2xl lg:hidden overflow-y-auto"
             >
-              <div className="mb-8 flex items-center justify-between">
-                <h3 className="text-2xl font-black">Filters</h3>
+              <div className="mb-8 flex items-center justify-between gap-4">
+                <div>
+                  <h3 className="text-2xl font-black text-slate-900">Filters</h3>
+                  <p className="text-xs text-slate-500 font-semibold mt-1">Refine your search</p>
+                </div>
                 <button 
                   onClick={() => setIsSidebarOpen(false)}
-                  className="rounded-full p-2 text-slate-400 hover:bg-slate-100 transition-colors"
+                  className="rounded-full p-2 text-slate-400 hover:bg-slate-100 transition-colors flex-shrink-0"
                 >
                   <X size={24} />
                 </button>

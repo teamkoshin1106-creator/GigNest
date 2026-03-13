@@ -20,19 +20,19 @@ interface FilterSectionProps {
 }
 
 const FilterSection: React.FC<FilterSectionProps> = ({ title, children, onClear, showClear }) => (
-  <div className="py-10 first:pt-0 border-t first:border-t-0 border-slate-100/80">
-    <div className="flex items-center justify-between mb-8">
-      <h4 className="text-[11px] font-black uppercase tracking-[0.25em] text-slate-400/80">{title}</h4>
+  <div className="py-8 px-2 first:pt-0 first:pb-8 border-t first:border-t-0 border-slate-100/80">
+    <div className="flex items-center justify-between mb-6">
+      <h4 className="text-[11px] font-black uppercase tracking-[0.3em] text-slate-700">{title}</h4>
       {showClear && onClear && (
         <button 
           onClick={onClear}
-          className="px-4 py-1.5 rounded-full bg-primary/5 text-[10px] font-black text-primary border border-primary/10 hover:bg-primary hover:text-white hover:border-primary hover:shadow-md hover:shadow-primary/20 transition-all duration-300 active:scale-95"
+          className="px-3 py-1 rounded-full bg-primary/5 text-[9px] font-black text-primary border border-primary/10 hover:bg-primary hover:text-white hover:border-primary hover:shadow-md hover:shadow-primary/20 transition-all duration-300 active:scale-95"
         >
           Clear
         </button>
       )}
     </div>
-    <div className="px-1">
+    <div>
       {children}
     </div>
   </div>
@@ -82,23 +82,23 @@ export const FiltersPanel: React.FC<{
   }, [filters.budgetRange]);
 
   return (
-    <div className={`flex flex-col h-full bg-white p-8 rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-100/80 ${className}`}>
-      <div className="flex-1 overflow-y-auto pr-4 -mr-4">
+    <div className={`flex flex-col h-full bg-white p-6 rounded-3xl shadow-lg shadow-slate-200/30 border border-slate-100 ${className}`}>
+      <div className="flex-1 overflow-y-auto pr-2 -mr-2">
         <FilterSection 
           title="Categories" 
           showClear={(filters.categories || []).length > 0}
           onClear={() => setFilters(prev => ({ ...prev, categories: [] }))}
         >
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-col gap-3">
             {CATEGORIES.map(category => (
               <button
                 key={category}
                 onClick={() => toggleCategory(category)}
                 className={`
-                  px-3 py-1.5 rounded-xl text-xs font-bold transition-all border
+                  w-full px-4 py-3 rounded-2xl text-sm font-bold transition-all border text-left
                   ${(filters.categories || []).includes(category)
-                    ? 'bg-primary border-primary text-white shadow-lg shadow-primary/20'
-                    : 'bg-white border-slate-100 text-slate-500 hover:border-slate-300'}
+                    ? 'bg-primary border-primary text-white shadow-lg shadow-primary/20 scale-105'
+                    : 'bg-white border-slate-100 text-slate-600 hover:border-primary/30 hover:bg-slate-50'}
                 `}
               >
                 {category}
@@ -108,21 +108,21 @@ export const FiltersPanel: React.FC<{
         </FilterSection>
 
         <FilterSection title="Experience Level">
-          <div className="space-y-2">
+          <div className="space-y-3">
             {EXPERIENCE_LEVELS.map(level => (
               <label key={level} className={`
-                flex items-center p-3 rounded-2xl border transition-all cursor-pointer group
+                flex items-center p-4 rounded-2xl border-2 transition-all cursor-pointer group
                 ${(level === "All" ? (filters.experienceLevels || []).length === 0 : (filters.experienceLevels || []).includes(level as ExperienceLevel))
-                  ? 'border-primary bg-primary/5 text-primary'
-                  : 'border-slate-50 hover:border-slate-200 bg-slate-50/50 text-slate-500'}
+                  ? 'border-primary bg-primary/8 text-primary shadow-md shadow-primary/10'
+                  : 'border-slate-100 hover:border-slate-200 bg-white text-slate-600'}
               `}>
                 <div className={`
-                  flex h-5 w-5 items-center justify-center rounded-full border-2 transition-all
+                  flex h-6 w-6 items-center justify-center rounded-full border-2 transition-all flex-shrink-0
                   ${(level === "All" ? (filters.experienceLevels || []).length === 0 : (filters.experienceLevels || []).includes(level as ExperienceLevel))
                     ? 'border-primary bg-primary'
                     : 'border-slate-300 bg-white group-hover:border-slate-400'}
                 `}>
-                  <div className="h-1.5 w-1.5 rounded-full bg-white" />
+                  <div className="h-2 w-2 rounded-full bg-white" />
                 </div>
                 <input
                   type="radio"
@@ -140,30 +140,42 @@ export const FiltersPanel: React.FC<{
         </FilterSection>
 
         <FilterSection title="Budget Range (₹)">
-          <div className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-1.5">
-                <label className="text-[10px] font-black text-slate-400 uppercase">Min</label>
+          <div className="space-y-5">
+            <div className="grid grid-cols-2 gap-4 w-full">
+              <div className="space-y-2">
+                <label className="text-[11px] font-black text-slate-700 uppercase tracking-wider block">Min Budget</label>
                 <input
                   type="number"
                   value={filters.budgetRange[0]}
                   onChange={(e) => handleBudgetInputChange(e, 0)}
-                  className="w-full px-4 py-3 rounded-2xl border border-slate-100 bg-slate-50/50 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                  className="w-full px-4 py-4 rounded-2xl border-2 border-slate-200 bg-white text-base font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                  placeholder="5000"
                 />
               </div>
-              <div className="space-y-1.5">
-                <label className="text-[10px] font-black text-slate-400 uppercase">Max</label>
+              <div className="space-y-2">
+                <label className="text-[11px] font-black text-slate-700 uppercase tracking-wider block">Max Budget</label>
                 <input
                   type="number"
                   value={filters.budgetRange[1]}
                   onChange={(e) => handleBudgetInputChange(e, 1)}
-                  className="w-full px-4 py-3 rounded-2xl border border-slate-100 bg-slate-50/50 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                  className="w-full px-4 py-4 rounded-2xl border-2 border-slate-200 bg-white text-base font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                  placeholder="50000"
                 />
               </div>
             </div>
+            <div className="pt-2">
+              <div className="text-center bg-gradient-to-r from-slate-50 to-slate-50 rounded-2xl py-4 border border-slate-100">
+                <div className="text-xs font-bold text-slate-600 mb-2 uppercase tracking-wide">Selected Range</div>
+                <div className="flex items-center justify-center gap-3">
+                  <span className="text-primary font-black text-sm">₹{(filters.budgetRange[0] || 0).toLocaleString('en-IN')}</span>
+                  <span className="text-slate-300">–</span>
+                  <span className="text-primary font-black text-sm">₹{(filters.budgetRange[1] || 0).toLocaleString('en-IN')}</span>
+                </div>
+              </div>
+            </div>
             {budgetError && (
-              <div className="flex items-start text-red-500 text-[10px] font-bold bg-red-50 p-2 rounded-lg">
-                <AlertCircle size={12} className="mr-1.5 mt-0.5 shrink-0" />
+              <div className="flex items-start text-red-600 text-xs font-bold bg-red-50 p-3 rounded-2xl border border-red-100">
+                <AlertCircle size={14} className="mr-2 mt-0.5 shrink-0" />
                 <span>{budgetError}</span>
               </div>
             )}
@@ -171,12 +183,12 @@ export const FiltersPanel: React.FC<{
         </FilterSection>
       </div>
 
-      <div className="pt-10 mt-auto">
+      <div className="pt-8 mt-8 border-t border-slate-100">
         <button 
           onClick={onReset}
-          className="group relative w-full py-5 rounded-2xl bg-slate-50 border-2 border-transparent text-xs font-black text-slate-400 hover:text-white transition-all duration-500 uppercase tracking-[0.2em] overflow-hidden"
+          className="group relative w-full py-4 rounded-2xl bg-slate-50 border-2 border-slate-100 text-xs font-black text-slate-500 hover:text-white transition-all duration-300 uppercase tracking-[0.15em] overflow-hidden hover:shadow-lg hover:shadow-primary/20"
         >
-          <div className="absolute inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary to-primary -translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
           <span className="relative z-10">Reset All Filters</span>
         </button>
       </div>
